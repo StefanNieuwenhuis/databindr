@@ -1,1 +1,1 @@
-export const greet = () => console.log("Hello World!");
+export * from "./data-bindr.component";
