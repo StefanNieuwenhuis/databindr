@@ -7,20 +7,19 @@
     <meta name="description" content="Databindings for Custom Elements" />
     <meta name="author" content="Stefan Nieuwenhuis" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-
-    <!-- Load all polyfills, including template, Promise, etc. -->
-    <script src="https://unpkg.com/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
   </head>
   <body>
     <script type="module">
       import { DataBindr } from "../dist/index.es.js";
+
+      const template = document.createElement("template");
+      template.innerHTML = `<h1 data-bind="title"></h1>`;
+
       class DemoElement extends DataBindr {
         constructor() {
           super();
           const shadowRoot = this.attachShadow({ mode: "open" });
-          shadowRoot.innerHTML = `
-            <h1 data-bind="title"></h1>
-        `;
+          this.shadowRoot.appendChild(template.content.cloneNode(true));
         }
       }
       customElements.define("demo-element", DemoElement);
