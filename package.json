@@ -34,6 +34,7 @@
   "peerDependencies": {},
   "devDependencies": {
     "rollup": "^1.20.2",
+    "rollup-plugin-terser": "^5.1.1",
     "rollup-plugin-typescript2": "^0.23.0",
     "typescript": "^3.5.3"
   }
