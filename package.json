@@ -9,6 +9,7 @@
   ],
   "types": "dist/index.d.ts",
   "scripts": {
+    "start": "yarn build && ws -p 8080 --spa demo/index.html",
     "build": "rollup -c",
     "watch": "rollup -cw",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -33,6 +34,7 @@
   "dependencies": {},
   "peerDependencies": {},
   "devDependencies": {
+    "local-web-server": "^3.0.7",
     "rollup": "^1.20.2",
     "rollup-plugin-terser": "^5.1.1",
     "rollup-plugin-typescript2": "^0.23.0",
