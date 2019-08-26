@@ -9,9 +9,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
   </head>
   <body>
+    <script
+      nomodule
+      src="https://unpkg.com/@stefannhs/databindr@latest/dist/index.js"
+    ></script>
     <script type="module">
-      import { DataBindr } from "../dist/index.es.js";
-
+      import { DataBindr } from "https://unpkg.com/@stefannhs/databindr@latest/dist/index.es.js";
       const template = document.createElement("template");
       template.innerHTML = `<h1 data-bind="title"></h1>`;
 

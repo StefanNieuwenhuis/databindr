@@ -1,15 +1,16 @@
 {
-  "name": "databindr",
+  "name": "@stefannhs/databindr",
   "version": "0.0.1",
   "description": "A Custom Element extension for simple data binding",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
-  "types": "dist/index.d.ts",
+  "access": "public",
   "scripts": {
-    "start": "yarn build && ws -p 8080 --spa demo/index.html",
+    "start": "ws -p 8080 --spa demo/index.html",
     "build": "rollup -c",
     "watch": "rollup -cw",
     "test": "echo \"Error: no test specified\" && exit 1"
