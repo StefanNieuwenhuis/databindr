@@ -4,9 +4,10 @@
   "description": "A Custom Element extension for simple data binding",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/data-bindr.component.d.ts",
+  "unpkg": "dist/index.js",
   "files": [
-    "dist"
+    "dist/"
   ],
   "access": "public",
   "scripts": {
@@ -21,6 +22,7 @@
   },
   "keywords": [
     "javascript",
+    "typescript",
     "webcomponents",
     "custom-elements",
     "shadowdom",
@@ -35,7 +37,6 @@
   "dependencies": {},
   "peerDependencies": {},
   "devDependencies": {
-    "local-web-server": "^3.0.7",
     "rollup": "^1.20.2",
     "rollup-plugin-terser": "^5.1.1",
     "rollup-plugin-typescript2": "^0.23.0",
