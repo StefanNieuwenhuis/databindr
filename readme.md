@@ -50,7 +50,7 @@ myGreeterComponent.state = {'greeting': 'Hello World!'};
 ```
 
 ## Demo
-Check out [https://stefannieuwenhuis.github.io/databindr](https://stefannieuwenhuis.github.io/databindr) for examples.
+Check out [https://stefannieuwenhuis.github.io/databindr](https://stefannieuwenhuis.github.io/databindr/index.html) for examples.
 
 ## Browser support
 The following browsers are supported natively:
