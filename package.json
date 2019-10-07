@@ -11,7 +11,6 @@
   ],
   "access": "public",
   "scripts": {
-    "start": "ws -p 8080 --spa demo/index.html",
     "build": "rollup -c",
     "watch": "rollup -cw",
     "test": "echo \"Error: no test specified\" && exit 1"
