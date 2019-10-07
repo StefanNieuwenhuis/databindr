@@ -49,6 +49,9 @@ const myGreeterComponent = document.createElement('my-greeter');
 myGreeterComponent.state = {'greeting': 'Hello World!'};
 ```
 
+## Demo
+Check out [https://stefannieuwenhuis.github.io/databindr](https://stefannieuwenhuis.github.io/databindr) for examples.
+
 ## Browser support
 The following browsers are supported natively:
 * Chrome >= 54
