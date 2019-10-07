@@ -1,5 +1,6 @@
 export class Flatten {
   private _result: any = {};
+
   private _recurse(cur: any, prop: string) {
     if (this._isObject(cur)) {
       let isEmpty = true;
@@ -15,6 +16,12 @@ export class Flatten {
     }
   }
 
+  /**
+   * This method checks if a given input is of type Object
+   *
+   * @param object - Any given input to be checked
+   * @returns True when the input is of type Object and false if it isn't
+   */
   private _isObject(object: any): boolean {
     return Object.prototype.toString.call(object).indexOf("Object") > -1;
   }
