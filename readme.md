@@ -42,7 +42,7 @@ class GreeterComponent extends DataBindr {
 }
 customElements.define('my-greeter', GreeterComponent);
 
-// Step 3 & 4: Define a state object
+// Create a new instance of my-greeter
 const myGreeterComponent = document.createElement('my-greeter');
 // Define a state by assigning a key/value pair to the component.
 // In this case myGreeterComponent.state.greeting contains the value Hello World
