@@ -24,7 +24,7 @@ export class DataBindr extends HTMLElement {
    * @prop keys - a subset of a state
    * @prop root - the root key of a path
    */
-  private _traverseBindings(keys, root): void {
+  private _traverseBindings(keys: any, root: string): void {
     Object.keys(keys).forEach(key => {
       typeof keys[key] === 'string'
         ? this._state = { ...this._state, ...{ [`${root}.${key}`]: keys[key] } }
