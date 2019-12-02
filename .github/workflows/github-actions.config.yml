@@ -27,6 +27,7 @@ jobs:
       - name: Lint code
         run: yarn lint
   build:
+    needs: lint
     runs-on: ubuntu-latest
     steps:
       - name: Checkout branch
