@@ -1,0 +1,48 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>DataBindr Examples page</title>
+    <meta name="description" content="DataBindr examples demo">
+    <meta name="author" content="Stefan Nieuwenhuis">
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        pre {
+            border-left: 5px solid #00bfb6;
+            background: #eee;
+            width: 300px;
+            padding: 25px 0 25px 25px;
+        }
+    </style>
+    <script type="module" src="./src/index.js"></script>
+
+    <body>
+        <h2>Example 1: Simple data example: Greeter component</h2>
+        <my-greeter></my-greeter>
+        The state of this component is set with the following:
+        <pre>{
+    'name': 'Stefan'
+}</pre>
+
+        <h2>Example 2: Nested data example: Business card</h2>
+        <my-business-card></my-business-card>
+        The state of this component is set with the following:
+        <pre>{
+    'firstname': 'John',
+    'lastname': 'Doe',
+    'address': {
+        'street': '123 Main St',
+        'city': 'Anytown',
+        'country': 'USA'
+    }
+}</pre>
+    </body>
+
+</html>
