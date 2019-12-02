@@ -14,7 +14,7 @@
     "start": "http-server ./docs",
     "build": "rollup -c",
     "watch": "rollup -cw",
-    "test": "jest --env=jest-environment-happy-dom"
+    "lint": "eslint --ext .ts src/"
   },
   "repository": {
     "type": "git",
