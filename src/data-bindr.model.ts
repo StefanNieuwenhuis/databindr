@@ -1,3 +1,3 @@
-export interface DataBindrState {
-    [path: string]: string;
+export interface Binding {
+  [key: string]: string | object;
 }
