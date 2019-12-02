@@ -14,7 +14,7 @@
     "start": "http-server ./docs",
     "build": "rollup -c",
     "watch": "rollup -cw",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --env=jest-environment-happy-dom"
   },
   "repository": {
     "type": "git",
@@ -35,11 +35,14 @@
   },
   "homepage": "https://github.com/StefanNieuwenhuis/databindr#readme",
   "dependencies": {},
-  "peerDependencies": {},
   "devDependencies": {
+    "@types/jest": "^24.0.23",
+    "jest": "^24.9.0",
+    "jest-environment-happy-dom": "^0.0.36",
     "rollup": "^1.20.2",
     "rollup-plugin-terser": "^5.1.1",
     "rollup-plugin-typescript2": "^0.23.0",
+    "ts-jest": "^24.2.0",
     "typescript": "^3.5.3"
   }
 }
