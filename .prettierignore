@@ -1,0 +1,21 @@
+# folders
+node_modules/
+dist/
+docs/
+
+# files
+LICENSE
+
+# extensions
+*.d.ts
+*.log
+*.md
+*.css*
+*.xml
+*.lock
+*.node
+*.sh
+*.template
+*.mustache
+*.tpl
+*.svg

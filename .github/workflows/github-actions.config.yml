@@ -1,21 +1,49 @@
-name: CI
+name: npm build, lint, test and publish
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
-  build: 
-    name: Lint on node ${{ matrix.node_version }} and ${{ matrix.os }}
-    runs-on: ${{matrix.os}}
-    strategy:
-      matrix:
-        node_version: [8, 10, 12]
-        os: [ubuntu-latest, windows-latest, macos-latest]
+  lint:
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-
-    - name: Use Node.js ${{ matrix.node_version }}
-      uses: actions/setup-node@v1
-      with:
-        version: ${{ matrix.node_version }}
-    - name: Build
-      run: npm install
+      - name: Checkout branch
+        uses: actions/checkout@v1
+      - name: Use Node v12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Cache dependencies
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: ${{ runner.OS }}-npm-cache-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.OS }}-npm-cache-
+      - name: Install dependencies
+        run: yarn
+      - name: Lint code
+        run: yarn lint
+  build:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v1
+      - name: Use Node v12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Cache dependencies
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: ${{ runner.OS }}-npm-cache-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.OS }}-npm-cache-
+      - name: Install dependencies
+        run: yarn
+      - name: Build
+        run: yarn build

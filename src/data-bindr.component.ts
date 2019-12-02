@@ -1,53 +1,53 @@
-import { DataBindrState } from './data-bindr.model';
+import { Binding } from './data-bindr.model';
 
 export class DataBindr extends HTMLElement {
-  private _state: DataBindrState = {};
+  private bindrState: Binding = {};
 
-  get state() {
-    return this._state;
+  get state(): Binding {
+    return this.bindrState;
   }
 
-  set state(newState: any) {
-    if (!this._isEqual(this.state, { ...this.state, ...newState })) {
-      this._generateBindings(newState);
-      this._updateBindings();
+  set state(newState: Binding) {
+    if (!this.isEqual(this.bindrState, { ...this.bindrState, ...newState })) {
+      this.generateBindings(newState);
+      this.updateBindings();
     }
-  }
-
-  constructor() {
-    super();
   }
 
   /**
    * Traverses through all keys of provided object to generate a bindings path
-   * 
+   *
    * @prop keys - a subset of a state
    * @prop root - the root key of a path
    */
-  private _traverseBindings(keys: any, root: string): void {
+  private traverseBindings(keys: Binding, root: string): void {
     Object.keys(keys).forEach(key => {
-      typeof keys[key] === 'string'
-        ? this._state = { ...this._state, ...{ [`${root}.${key}`]: keys[key] } }
-        : this._traverseBindings(keys[key], key);
+      if (typeof keys[key] === 'string') {
+        this.bindrState = { ...this.bindrState, ...{ [`${root}.${key}`]: keys[key] } };
+      } else {
+        this.traverseBindings(keys[key] as Binding, key);
+      }
     });
   }
 
-  /** 
+  /**
    * Generates bindings and updates the state
    * @prop state - any new state object
    */
-  private _generateBindings(state: any): void {
+  private generateBindings(state: Binding): void {
     Object.keys(state).forEach(key => {
       // skip if state[key] is equal to the new state
-      if (this.state[key] === state[key]) {
+      if (this.bindrState[key] === state[key]) {
         return;
       }
 
       // if state[key] is an object: generate a binding from the path
       // else: add state[key] to the state
-      typeof state[key] === 'object'
-        ? this._traverseBindings(state[key], key)
-        : this._state[key] = state[key];
+      if (typeof state[key] === 'object') {
+        this.traverseBindings(state[key] as Binding, key);
+      } else {
+        this.bindrState[key] = state[key] as string;
+      }
     });
   }
 
@@ -56,11 +56,11 @@ export class DataBindr extends HTMLElement {
    * Find the corresponding node
    * Update its textContent
    */
-  private _updateBindings(): void {
-    Object.keys(this.state).forEach(binding => {
-      const el = this._selectNode(binding);
+  private updateBindings(): void {
+    Object.keys(this.bindrState).forEach(binding => {
+      const el = this.selectNode(binding);
       if (el) {
-        el.textContent = this.state[binding];
+        el.textContent = this.bindrState[binding] as string;
       }
     });
   }
@@ -68,12 +68,14 @@ export class DataBindr extends HTMLElement {
   /**
    * Selects the node in either shadow or regular DOM
    * @param binding - key to select a node with
-   * 
+   *
    */
-  private _selectNode(binding: string): HTMLElement {
-    return this.shadowRoot
-      ? this.shadowRoot.querySelector(`[data-bind='${binding}']`)
-      : this.querySelector(`[data-bind='${binding}']`);
+  private selectNode(binding: string): HTMLElement {
+    if (this.shadowRoot) {
+      return this.shadowRoot.querySelector(`[data-bind='${binding}']`);
+    }
+
+    return this.querySelector(`[data-bind='${binding}']`);
   }
 
   /**
@@ -82,7 +84,7 @@ export class DataBindr extends HTMLElement {
    * @param b - the second object
    * @returns - if two objects are exactly the same or not
    */
-  private _isEqual(a: any, b: any): boolean {
+  private isEqual = (a: object, b: object): boolean => {
     return JSON.stringify(a) === JSON.stringify(b);
-  }
+  };
 }

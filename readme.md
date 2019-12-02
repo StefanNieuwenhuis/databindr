@@ -3,6 +3,8 @@ Enables simple data binding for Web Components by providing a base class.
 
 > By [@stefannhs](//twitter.com/stefannhs)
 
+![](https://github.com/stefannieuwenhuis/databindr/workflows/npm%20build,%20lint,%20test%20and%20publish/badge.svg)
+
 ## Installation
 ```html
 # unpkg
