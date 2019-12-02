@@ -14,7 +14,7 @@
     "start": "http-server ./docs",
     "build": "rollup -c",
     "watch": "rollup -cw",
-    "test": "jest --env=jest-environment-happy-dom"
+    "lint": "eslint --ext .js,.ts,.tsx src/"
   },
   "repository": {
     "type": "git",
@@ -36,13 +36,18 @@
   "homepage": "https://github.com/StefanNieuwenhuis/databindr#readme",
   "dependencies": {},
   "devDependencies": {
-    "@types/jest": "^24.0.23",
-    "jest": "^24.9.0",
-    "jest-environment-happy-dom": "^0.0.36",
+    "@typescript-eslint/eslint-plugin": "^2.10.0",
+    "@typescript-eslint/parser": "^2.10.0",
+    "eslint": "^6.7.2",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-prettier": "^3.1.1",
+    "prettier": "^1.19.1",
     "rollup": "^1.20.2",
     "rollup-plugin-terser": "^5.1.1",
     "rollup-plugin-typescript2": "^0.23.0",
-    "ts-jest": "^24.2.0",
     "typescript": "^3.5.3"
-  }
+  },
+  "peerDependencies": {}
 }
