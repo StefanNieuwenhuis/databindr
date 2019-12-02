@@ -5,7 +5,8 @@ const fs = require('fs');
 const DELIMETER = '----DELIMITER----';
 const repoUrl = 'https://github.com/stefannieuwenhuis/databindr';
 
-const output = child.execSync(`git log --format=%B%H${DELIMETER}`).toString('utf-8');
+const latestTag = child.execSync('git describe --long').toString('utf-8').split('-')[0];
+const output = child.execSync(`git log ${latestTag}..HEAD --format=%B%H${DELIMETER}`).toString('utf-8');
 
 const commitsArray = output.split(DELIMETER)
     .map(commit => {
@@ -26,7 +27,7 @@ const chores = [];
 commitsArray.forEach(commit => {
     if (commit.message.startsWith('feature: ')) {
         features.push(
-            `* ${commit.message.replace('feature', '')} ([${commit.sha.substring(0, 6)}](${repoUrl}/commit/${commit.sha}))\n`
+            `* ${commit.message.replace('feature: ', '')} ([${commit.sha.substring(0, 6)}](${repoUrl}/commit/${commit.sha}))\n`
         );
     }
     if (commit.message.startsWith('chore: ')) {
@@ -44,9 +45,9 @@ if (features.length) {
     newChangelog += '\n';
 }
 
-if (features.length) {
+if (chores.length) {
     newChangelog += `## Chores\n`;
-    features.forEach(chore => {
+    chores.forEach(chore => {
         newChangelog += chore;
     });
     newChangelog += '\n';
