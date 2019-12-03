@@ -34,7 +34,7 @@ const filterPackage = () => {
     });
 };
 
-fs.writeFile('./dist/package.json', JSON.stringify(filterPackage(), null, 2), (error) => {
+fs.writeFile('./dist/package.json', JSON.stringify(filterPackage(), null, 2), { flag: 'w' }, (error) => {
     if (error) {
         console.error(error);
     }

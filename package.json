@@ -12,7 +12,7 @@
   "access": "public",
   "scripts": {
     "start": "http-server ./docs",
-    "build": "node ./bin/build.js && rollup -c && cp CHANGELOG.md ./dist",
+    "build": "rollup -c && cp CHANGELOG.md ./dist && node ./bin/build.js",
     "watch": "rollup -cw",
     "lint": "eslint --ext .js,.ts,.tsx src/",
     "commit": "git-cz",
