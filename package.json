@@ -1,6 +1,6 @@
 {
   "name": "@stefannhs/databindr",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A Custom Element extension for simple data binding",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
