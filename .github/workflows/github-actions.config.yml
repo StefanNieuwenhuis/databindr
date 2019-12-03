@@ -47,3 +47,8 @@ jobs:
         run: yarn
       - name: Build
         run: yarn build
+      - name: Store artiface
+        uses: actions/upload-artifact@v1
+        with:
+          name: build
+          path: ./dist
