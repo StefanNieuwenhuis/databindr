@@ -5,7 +5,13 @@ const fs = require('fs');
 const DELIMETER = '----DELIMITER----';
 const repoUrl = 'https://github.com/stefannieuwenhuis/databindr';
 
-const latestTag = child.execSync('git describe --long').toString('utf-8').split('-')[0];
+const latestTag = child
+    .execSync('git describe --long')
+    .toString('utf-8')
+    .match(/[0-9]*\.[0-9]*\.[0-9]*(-(alpha|beta))*/g)[0];
+
+console.log(latestTag);
+
 const output = child.execSync(`git log ${latestTag}..HEAD --format=%B%H${DELIMETER}`).toString('utf-8');
 
 const commitsArray = output.split(DELIMETER)
@@ -17,7 +23,7 @@ const commitsArray = output.split(DELIMETER)
 
 const currentChangelog = fs.readFileSync('../CHANGELOG.md', 'utf-8');
 
-let newChangelog = `# Version ${version} (${
+let newChangelog = `# [${latestTag}](${repoUrl}/compare/master...${latestTag}) (${
     new Date().toISOString().split("T")[0]
     })\n\n`;
 
