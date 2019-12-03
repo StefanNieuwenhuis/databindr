@@ -14,7 +14,8 @@
     "start": "http-server ./docs",
     "build": "rollup -c",
     "watch": "rollup -cw",
-    "lint": "eslint --ext .js,.ts,.tsx src/"
+    "lint": "eslint --ext .js,.ts,.tsx src/",
+    "commit": "git-cz"
   },
   "repository": {
     "type": "git",
@@ -38,6 +39,8 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.10.0",
     "@typescript-eslint/parser": "^2.10.0",
+    "commitizen": "^4.0.3",
+    "cz-conventional-changelog": "^3.0.2",
     "eslint": "^6.7.2",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-prettier": "^6.7.0",
@@ -49,5 +52,10 @@
     "rollup-plugin-typescript2": "^0.23.0",
     "typescript": "^3.5.3"
   },
-  "peerDependencies": {}
+  "peerDependencies": {},
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
