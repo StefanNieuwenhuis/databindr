@@ -15,7 +15,9 @@ export default {
   plugins: [
     terser(),
     typescript({
-      typescript: require("typescript")
+      typescript: require("typescript"),
+      declarationDir: './dist/types',
+      outDir: './dist/types'
     })
   ]
 };

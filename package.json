@@ -4,7 +4,7 @@
   "description": "A Custom Element extension for simple data binding",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
-  "types": "dist/data-bindr.component.d.ts",
+  "types": "dist/types/data-bindr.component.d.ts",
   "unpkg": "dist/index.js",
   "files": [
     "dist/"
@@ -12,7 +12,7 @@
   "access": "public",
   "scripts": {
     "start": "http-server ./docs",
-    "build": "rollup -c",
+    "build": "node ./bin/build.js && rollup -c && cp CHANGELOG.md ./dist",
     "watch": "rollup -cw",
     "lint": "eslint --ext .js,.ts,.tsx src/",
     "commit": "git-cz",
@@ -23,6 +23,7 @@
     "url": "git+https://github.com/StefanNieuwenhuis/databindr.git"
   },
   "keywords": [
+    "databindr",
     "javascript",
     "typescript",
     "webcomponents",
