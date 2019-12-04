@@ -1,11 +1,11 @@
 {
   "name": "@stefannhs/databindr",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "description": "A Custom Element extension for simple data binding",
   "main": "dist/index.js",
-  "module": "dist/index.es.js",
-  "types": "dist/types/data-bindr.component.d.ts",
-  "unpkg": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/types/index.d.ts",
+  "unpkg": "dist/databindr.js",
   "files": [
     "dist/"
   ],
